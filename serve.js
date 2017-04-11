@@ -1,4 +1,4 @@
-﻿'use strict';
+'use strict';
 
 var express = require('express'),
     app = express(),
@@ -13,8 +13,12 @@ app.use(express.static(__dirname + '/dist'));
 app.set('views', __dirname + '/app');
 app.set('view engine', 'html');
 
-app.get('/*', function(request, response) {
-  response.render('pages/index');
+// app.get('/*', function(request, response) {
+//   response.render('pages/index');
+// });
+
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname + '/dist/index.html'));
 });
 
 app.listen(app.get('port'), function() {
